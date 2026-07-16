@@ -1,0 +1,557 @@
+log started: Tue Oct 28 03:37:32 2025
+
+Log file: ./leap.log
+>> # ----- NOTE: this is designed for PDB format 3!
+>> #       Uses ff99bsc0_chiOL3 for RNA
+>> #       	(ff99): Wang et al. J. Comp. Chem. 21: 1049, 2000
+>> #       	(bsc0): Perez et al. Biophys J. 92: 3817, 2007
+>> #       	(chiOL3): Zgarbova et al. JCTC 7: 2886, 2011
+>> #           (note: all of the above are in parm10.dat, loaded below)
+>> #
+>> #	load atom type hybridizations
+>> #
+>> addAtomTypes {
+>> 	{ "H"   "H" "sp3" }
+>> 	{ "HO"  "H" "sp3" }
+>> 	{ "HS"  "H" "sp3" }
+>> 	{ "H1"  "H" "sp3" }
+>> 	{ "H2"  "H" "sp3" }
+>> 	{ "H3"  "H" "sp3" }
+>> 	{ "H4"  "H" "sp3" }
+>> 	{ "H5"  "H" "sp3" }
+>> 	{ "HW"  "H" "sp3" }
+>> 	{ "HC"  "H" "sp3" }
+>> 	{ "HA"  "H" "sp3" }
+>> 	{ "HP"  "H" "sp3" }
+>> 	{ "HZ"  "H" "sp3" }
+>> 	{ "OH"  "O" "sp3" }
+>> 	{ "OS"  "O" "sp3" }
+>> 	{ "O"   "O" "sp2" }
+>> 	{ "O2"  "O" "sp2" }
+>> 	{ "OP"  "O" "sp2" }
+>> 	{ "OW"  "O" "sp3" }
+>> 	{ "CT"  "C" "sp3" }
+>> 	{ "CX"  "C" "sp3" }
+>> 	{ "CS"  "C" "sp2" }
+>> 	{ "C"   "C" "sp2" }
+>> 	{ "C*"  "C" "sp2" }
+>> 	{ "CA"  "C" "sp2" }
+>> 	{ "CB"  "C" "sp2" }
+>> 	{ "CC"  "C" "sp2" }
+>> 	{ "CN"  "C" "sp2" }
+>> 	{ "CM"  "C" "sp2" }
+>> 	{ "CK"  "C" "sp2" }
+>> 	{ "CQ"  "C" "sp2" }
+>> 	{ "CD"  "C" "sp2" }
+>> 	{ "C5"  "C" "sp2" }
+>> 	{ "C4"  "C" "sp2" }
+>> 	{ "CP"  "C" "sp2" }
+>> 	{ "CI"  "C" "sp3" }
+>> 	{ "CW"  "C" "sp2" }
+>> 	{ "CV"  "C" "sp2" }
+>> 	{ "CR"  "C" "sp2" }
+>> 	{ "CY"  "C" "sp2" }
+>> 	{ "C0"  "Ca" "sp3" }
+>> 	{ "MG"  "Mg" "sp3" }
+>> 	{ "N"   "N" "sp2" }
+>> 	{ "NA"  "N" "sp2" }
+>> 	{ "N2"  "N" "sp2" }
+>> 	{ "N*"  "N" "sp2" }
+>> 	{ "NB"  "N" "sp2" }
+>> 	{ "NC"  "N" "sp2" }
+>> 	{ "NT"  "N" "sp3" }
+>> 	{ "NY"  "N" "sp2" }
+>> 	{ "N3"  "N" "sp3" }
+>> 	{ "S"   "S" "sp3" }
+>> 	{ "SH"  "S" "sp3" }
+>> 	{ "P"   "P" "sp3" }
+>> 	{ "LP"  ""  "sp3" }
+>> 	{ "EP"  ""  "sp3" }
+>> 	{ "F"   "F" "sp3" }
+>> 	{ "Cl"  "Cl" "sp3" }
+>> 	{ "Br"  "Br" "sp3" }
+>> 	{ "I"   "I"  "sp3" }
+>> }
+>> #
+>> #	Load the main parameter set.
+>> #
+>> parm10 = loadamberparams parm10.dat
+Loading parameters: /work19/yilan/softwares/miniconda3/envs/AmberTools25/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+>> #
+>> #	Load main chain and terminating nucleic acids
+>> #
+>> 
+>> loadOff RNA.lib
+Loading library: /work19/yilan/softwares/miniconda3/envs/AmberTools25/dat/leap/lib/RNA.lib
+Loading: A
+Loading: A3
+Loading: A5
+Loading: AN
+Loading: C
+Loading: C3
+Loading: C5
+Loading: CN
+Loading: G
+Loading: G3
+Loading: G5
+Loading: GN
+Loading: OHE
+Loading: U
+Loading: U3
+Loading: U5
+Loading: UN
+>> 
+>> #
+>> #	Define the PDB name map for the nucleic acids
+>> #
+>> addPdbResMap {
+>>   { 0 "G" "G5"  } { 1 "G" "G3"  } 
+>>   { 0 "A" "A5"  } { 1 "A" "A3"  } 
+>>   { 0 "C" "C5"  } { 1 "C" "C3"  } 
+>>   { 0 "U" "U5"  } { 1 "U" "U3"  } 
+>> #  some old Amber residue names for RNA:
+>>   { 0  "RA5" "A5" } { 1 "RA3" "A3"} {"RA" "A" }
+>>   { 0  "RC5" "C5" } { 1 "RC3" "C3"} {"RC" "C" }
+>>   { 0  "RG5" "G5" } { 1 "RG3" "G3"} {"RG" "G" }
+>>   { 0  "RU5" "U5" } { 1 "RU3" "U3"} {"RU" "U" }
+>> #  uncomment out the following if you have this old style RNA files:
+>> # { 0 "GUA" "G5"  } { 1 "GUA" "G3"  } { "GUA" "G" }
+>> # { 0 "ADE" "A5"  } { 1 "ADE" "A3"  } { "ADE" "A" }
+>> # { 0 "CYT" "C5"  } { 1 "CYT" "C3"  } { "CYT" "C" }
+>> # { 0 "URA" "R5"  } { 1 "URA" "R3"  } { "URA" "R" }
+>> 
+>> }
+>> 
+>> #  try to be good about reading in really old atom names as well:
+>> addPdbAtomMap {
+>>   { "O5*" "O5'" }
+>>   { "C5*" "C5'" }
+>>   { "C4*" "C4'" }
+>>   { "O4*" "O4'" }
+>>   { "C3*" "C3'" }
+>>   { "O3*" "O3'" }
+>>   { "C2*" "C2'" }
+>>   { "O2*" "O2'" }
+>>   { "C1*" "C1'" }
+>>   { "C5M" "C7"  }
+>>   { "H1*" "H1'" }
+>>   { "H2*1" "H2'" }
+>>   { "H2*2" "H2''" }
+>>   { "H2'1" "H2'" }
+>>   { "H2'2" "H2''" }
+>>   { "H3*" "H3'" }
+>>   { "H4*" "H4'" }
+>>   { "H5*1" "H5'" }
+>>   { "H5*2" "H5''" }
+>>   { "H5'1" "H5'" }
+>>   { "H5'2" "H5''" }
+>>   { "HO'2" "HO2'" }
+>>   { "H5T"  "HO5'" }
+>>   { "H3T"  "HO3'" }
+>>   { "O1'" "O4'" }
+>>   { "OA"  "OP1" }
+>>   { "OB"  "OP2" }
+>>   { "O1P" "OP1" }
+>>   { "O2P" "OP2" }
+>>   { "O3P" "OP3" }
+>> }
+>> 
+> 
+> source leaprc.gaff2
+----- Source: /work19/yilan/softwares/miniconda3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2
+----- Source of /work19/yilan/softwares/miniconda3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2 done
+>> logFile leap.log
+log started: Tue Oct 28 03:37:32 2025
+
+Log file: ./leap.log
+>> #
+>> # ----- leaprc for loading the general Amber Force field.
+>> #       This file is mostly for use with Antechamber
+>> #
+>> #	load atom type hybridizations
+>> #
+>> addAtomTypes {
+>> 	{ "h1"  "H" "sp3" }
+>> 	{ "h2"  "H" "sp3" }
+>> 	{ "h3"  "H" "sp3" }
+>> 	{ "h4"  "H" "sp3" }
+>> 	{ "h5"  "H" "sp3" }
+>> 	{ "ha"  "H" "sp3" }
+>> 	{ "hc"  "H" "sp3" }
+>> 	{ "hn"  "H" "sp3" }
+>> 	{ "ho"  "H" "sp3" }
+>> 	{ "hp"  "H" "sp3" }
+>> 	{ "hs"  "H" "sp3" }
+>> 	{ "hw"  "H" "sp3" }
+>> 	{ "hx"  "H" "sp3" }
+>> 	{ "o"  "O" "sp2" }
+>> 	{ "o2"  "O" "sp2" }
+>> 	{ "oh"  "O" "sp3" }
+>> 	{ "op"  "O" "sp3" }
+>> 	{ "oq"  "O" "sp3" }
+>> 	{ "os"  "O" "sp3" }
+>> 	{ "ow"  "O" "sp3" }
+>> 	{ "c"  "C" "sp2" }
+>> 	{ "c1"  "C" "sp2" }
+>> 	{ "c2"  "C" "sp2" }
+>> 	{ "c3"  "C" "sp3" }
+>> 	{ "ca"  "C" "sp2" }
+>> 	{ "cc"  "C" "sp2" }
+>> 	{ "cd"  "C" "sp2" }
+>> 	{ "ce"  "C" "sp2" }
+>> 	{ "cf"  "C" "sp2" }
+>> 	{ "cg"  "C" "sp2" }
+>> 	{ "ch"  "C" "sp2" }
+>> 	{ "cp"  "C" "sp2" }
+>> 	{ "cs"  "C" "sp2" }
+>> 	{ "cq"  "C" "sp2" }
+>> 	{ "cu"  "C" "sp2" }
+>> 	{ "cv"  "C" "sp2" }
+>> 	{ "cx"  "C" "sp2" }
+>> 	{ "cy"  "C" "sp2" }
+>> 	{ "cz"  "C" "sp2" }
+>> 	{ "n"   "N" "sp2" }
+>> 	{ "n1"  "N" "sp2" }
+>> 	{ "n2"  "N" "sp2" }
+>> 	{ "n3"  "N" "sp3" }
+>> 	{ "n4"  "N" "sp3" }
+>> 	{ "n5"  "N" "sp3" }
+>> 	{ "n6"  "N" "sp3" }
+>> 	{ "n7"  "N" "sp3" }
+>> 	{ "n8"  "N" "sp3" }
+>> 	{ "n9"  "N" "sp3" }
+>> 	{ "na"  "N" "sp2" }
+>> 	{ "nb"  "N" "sp2" }
+>> 	{ "nc"  "N" "sp2" }
+>> 	{ "nd"  "N" "sp2" }
+>> 	{ "ne"  "N" "sp2" }
+>> 	{ "nf"  "N" "sp2" }
+>> 	{ "nh"  "N" "sp2" }
+>> 	{ "ni"  "N" "sp2" }
+>> 	{ "nj"  "N" "sp2" }
+>> 	{ "nk"  "N" "sp3" }
+>> 	{ "nl"  "N" "sp3" }
+>> 	{ "nm"  "N" "sp2" }
+>> 	{ "nn"  "N" "sp2" }
+>> 	{ "no"  "N" "sp2" }
+>> 	{ "np"  "N" "sp3" }
+>> 	{ "nq"  "N" "sp3" }
+>> 	{ "ns"  "N" "sp2" }
+>> 	{ "nt"  "N" "sp2" }
+>> 	{ "nu"  "N" "sp2" }
+>> 	{ "nv"  "N" "sp2" }
+>> 	{ "nx"  "N" "sp3" }
+>> 	{ "ny"  "N" "sp3" }
+>> 	{ "nz"  "N" "sp3" }
+>> 	{ "n+"  "N" "sp3" }
+>> 	{ "s"   "S" "sp2" }
+>> 	{ "s2"   "S" "sp2" }
+>> 	{ "s3"   "S" "sp3" }
+>> 	{ "s4"   "S" "sp3" }
+>> 	{ "s6"   "S" "sp3" }
+>> 	{ "sh"   "S" "sp3" }
+>> 	{ "sp"   "S" "sp3" }
+>> 	{ "sq"   "S" "sp3" }
+>> 	{ "ss"   "S" "sp3" }
+>> 	{ "sx"   "S" "sp3" }
+>> 	{ "sy"   "S" "sp3" }
+>> 	{ "p2"   "P" "sp2" }
+>> 	{ "p3"   "P" "sp3" }
+>> 	{ "p4"   "P" "sp3" }
+>> 	{ "p5"   "P" "sp3" }
+>> 	{ "pb"   "P" "sp3" }
+>> 	{ "pc"   "P" "sp3" }
+>> 	{ "pd"   "P" "sp3" }
+>> 	{ "pe"   "P" "sp3" }
+>> 	{ "pf"   "P" "sp3" }
+>> 	{ "px"   "P" "sp3" }
+>> 	{ "py"   "P" "sp3" }
+>> 	{ "f"   "F" "sp3" }
+>> 	{ "cl"  "Cl" "sp3" }
+>> 	{ "br"  "Br" "sp3" }
+>> 	{ "i"   "I"  "sp3" }
+>> }
+>> #
+>> #	Load the general force field parameter set.
+>> #
+>> gaff = loadamberparams gaff2.dat
+Loading parameters: /work19/yilan/softwares/miniconda3/envs/AmberTools25/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+(UNKNOWN ATOM TYPE: c6)
+> 
+> loadAmberParams ../1_modeling/prf.frcmod
+Loading parameters: ../1_modeling/prf.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+> PRF = loadmol2 ../1_modeling/prf.mol2
+Loading Mol2 file: ../1_modeling/prf.mol2
+Reading MOLECULE named PRF
+> saveamberparm PRF sys.inpcrd sys.prmtop
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 9 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	PRF	1
+  )
+ (no restraints)
+> saveoff PRF ../PRF.lib
+Saving PRF.
+Building topology.
+Building atom parameters.
+> # loadAmberParams sys.prmtop
+> loadoff ../PRF.lib
+Loading library: ../PRF.lib
+Loading: PRF
+> sys = loadpdb sys.pdb
+Loading PDB file: ./sys.pdb
+Matching PDB residue names to LEaP variables.
+Mapped residue C, term: Terminal/beginning, seq. number: 0 to: C5.
+Mapped residue G, term: Terminal/last, seq. number: 32 to: G3.
+  total atoms in file: 715
+  Leap added 369 missing atoms according to residue templates:
+       369 H / lone pairs
+> savepdb sys leap.pdb
+Writing pdb file: leap.pdb
+> solvatebox sys OPCBOX {23.6 19.18 15}
+  Solute vdw bounding box:              27.246 36.168 45.323
+  Total bounding box for atom centers:  74.446 74.528 75.323
+  Solvent unit box:                     18.865 18.478 19.006
+The number of boxes:  x= 4  y= 5  z= 4
+  Total vdw box size:                   77.610 77.732 77.940 angstroms.
+  Volume: 470193.040 A^3 
+  Total mass 236956.504 amu,  Density 0.837 g/cc
+  Added 12557 residues.
+> charge sys
+Total unperturbed charge: -32.000001
+Total perturbed charge:   -32.000001
+> addions sys K+ 53
+Adding 53 counter ions to "sys" using 1A grid
+Total solute charge:  -32.00  Max atom radius:   2.10
+Grid extends from solute vdw + 6.43  to  12.53
+Box:
+   enclosing:  -24.32 -28.95 -33.39   24.67 29.46 34.09
+   sized:			      103.68 99.05 94.61
+   edge:        128.00
+Resolution:      1.00 Angstrom.
+Tree depth: 7
+Volume =  1.91% of box, grid points 40061
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed K+ in sys at (13.03, -5.39, 4.52).
+(Replacing solvent molecule)
+Placed K+ in sys at (10.08, 2.76, 15.50).
+(Replacing solvent molecule)
+Placed K+ in sys at (-16.33, 6.30, 1.10).
+(Replacing solvent molecule)
+Placed K+ in sys at (0.97, -20.95, 9.41).
+(Replacing solvent molecule)
+Placed K+ in sys at (12.87, 7.37, 2.32).
+(Replacing solvent molecule)
+Placed K+ in sys at (-2.12, -23.39, -4.13).
+(Replacing solvent molecule)
+Placed K+ in sys at (9.04, -10.77, 12.01).
+(Replacing solvent molecule)
+Placed K+ in sys at (-17.86, -7.89, -2.26).
+(Replacing solvent molecule)
+Placed K+ in sys at (0.70, -15.73, -17.75).
+(Replacing solvent molecule)
+Placed K+ in sys at (7.03, 13.86, -7.26).
+(Replacing solvent molecule)
+Placed K+ in sys at (-14.86, -7.65, 9.90).
+(Replacing solvent molecule)
+Placed K+ in sys at (-13.39, 8.47, -5.23).
+(Replacing solvent molecule)
+Placed K+ in sys at (13.16, -13.87, 3.14).
+(Replacing solvent molecule)
+Placed K+ in sys at (-10.88, -5.47, -16.09).
+(Replacing solvent molecule)
+Placed K+ in sys at (9.61, 14.56, 10.25).
+(Replacing solvent molecule)
+Placed K+ in sys at (-9.00, 5.16, 20.07).
+(Replacing solvent molecule)
+Placed K+ in sys at (-1.81, 11.50, -15.62).
+(Replacing solvent molecule)
+Placed K+ in sys at (4.01, 1.57, 20.13).
+(Replacing solvent molecule)
+Placed K+ in sys at (15.83, -3.35, -11.56).
+(Replacing solvent molecule)
+Placed K+ in sys at (-17.79, 5.25, 12.20).
+(Replacing solvent molecule)
+Placed K+ in sys at (-2.51, -12.55, 18.62).
+(Replacing solvent molecule)
+Placed K+ in sys at (0.97, -20.95, -9.59).
+(Replacing solvent molecule)
+Placed K+ in sys at (-6.04, 21.52, 9.74).
+(Replacing solvent molecule)
+Placed K+ in sys at (11.80, -0.75, 2.52).
+(Replacing solvent molecule)
+Placed K+ in sys at (-2.78, 1.04, -23.42).
+(Replacing solvent molecule)
+Placed K+ in sys at (-13.93, -19.55, -6.39).
+(Replacing solvent molecule)
+Placed K+ in sys at (6.48, 20.28, 5.63).
+(Replacing solvent molecule)
+Placed K+ in sys at (9.87, 5.16, -17.94).
+(Replacing solvent molecule)
+Placed K+ in sys at (8.28, -21.32, 0.04).
+(Replacing solvent molecule)
+Placed K+ in sys at (-11.55, 12.96, 19.20).
+(Replacing solvent molecule)
+Placed K+ in sys at (-12.07, -17.48, 10.22).
+(Replacing solvent molecule)
+Placed K+ in sys at (-2.83, -9.04, -25.44).
+(Replacing solvent molecule)
+Placed K+ in sys at (-14.75, 1.80, -11.61).
+(Replacing solvent molecule)
+Placed K+ in sys at (6.81, 20.98, 19.97).
+(Replacing solvent molecule)
+Placed K+ in sys at (1.22, 19.02, -5.12).
+(Replacing solvent molecule)
+Placed K+ in sys at (-14.79, 13.34, 3.97).
+(Replacing solvent molecule)
+Placed K+ in sys at (15.26, -19.59, -9.62).
+(Replacing solvent molecule)
+Placed K+ in sys at (-10.08, -15.18, -13.76).
+(Replacing solvent molecule)
+Placed K+ in sys at (4.70, -6.24, 20.37).
+(Replacing solvent molecule)
+Placed K+ in sys at (-5.84, -23.87, 4.52).
+(Replacing solvent molecule)
+Placed K+ in sys at (8.44, -8.28, -27.30).
+(Replacing solvent molecule)
+Placed K+ in sys at (-2.38, 16.58, 32.46).
+(Replacing solvent molecule)
+Placed K+ in sys at (22.87, 10.83, -9.10).
+(Replacing solvent molecule)
+Placed K+ in sys at (-10.88, -5.47, 21.92).
+(Replacing solvent molecule)
+Placed K+ in sys at (-13.14, 22.96, -11.46).
+(Replacing solvent molecule)
+Placed K+ in sys at (18.43, -8.55, -4.96).
+(Replacing solvent molecule)
+Placed K+ in sys at (-3.82, 27.44, 21.72).
+(Replacing solvent molecule)
+Placed K+ in sys at (-18.99, -1.06, -0.02).
+(Replacing solvent molecule)
+Placed K+ in sys at (20.88, -9.53, -24.34).
+(Replacing solvent molecule)
+Placed K+ in sys at (7.92, 11.02, 23.98).
+(Replacing solvent molecule)
+Placed K+ in sys at (-9.85, 7.37, -16.41).
+(Replacing solvent molecule)
+Placed K+ in sys at (-1.75, 28.29, -1.43).
+(Replacing solvent molecule)
+Placed K+ in sys at (2.67, -16.44, 15.87).
+
+Done adding ions.
+> addions sys Cl- 21
+Adding 21 counter ions to "sys" using 1A grid
+Total solute charge:  21.00  Max atom radius:   2.10
+Grid extends from solute vdw + 6.61  to  12.71
+Box:
+   enclosing:  -31.71 -36.58 -40.01   35.58 41.00 45.18
+   sized:			      96.29 91.42 87.99
+   edge:        128.00
+Resolution:      1.00 Angstrom.
+Tree depth: 7
+Volume =  3.49% of box, grid points 73157
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Cl- in sys at (-18.47, 13.11, -3.23).
+(Replacing solvent molecule)
+Placed Cl- in sys at (11.30, 4.92, 24.22).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-5.62, 22.89, -6.12).
+(Replacing solvent molecule)
+Placed Cl- in sys at (0.51, -26.92, 4.39).
+(Replacing solvent molecule)
+Placed Cl- in sys at (19.12, -10.74, -16.35).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-16.13, 0.28, -19.84).
+(Replacing solvent molecule)
+Placed Cl- in sys at (0.63, 21.93, 27.96).
+(Replacing solvent molecule)
+Placed Cl- in sys at (19.37, -8.44, 4.39).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-5.60, -19.80, 14.99).
+(Replacing solvent molecule)
+Placed Cl- in sys at (0.88, 25.72, 7.31).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-7.39, 11.03, -23.57).
+(Replacing solvent molecule)
+Placed Cl- in sys at (3.64, -15.27, 24.03).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-7.51, -25.38, -10.91).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-18.61, 7.74, 21.66).
+(Replacing solvent molecule)
+Placed Cl- in sys at (20.00, 2.52, -13.06).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-21.56, -7.10, 6.28).
+(Replacing solvent molecule)
+Placed Cl- in sys at (3.27, -17.50, -26.42).
+(Replacing solvent molecule)
+Placed Cl- in sys at (10.98, 21.81, 12.04).
+(Replacing solvent molecule)
+Placed Cl- in sys at (14.83, -3.36, -27.00).
+(Replacing solvent molecule)
+Placed Cl- in sys at (-22.47, -1.11, -9.62).
+(Replacing solvent molecule)
+Placed Cl- in sys at (18.73, -19.54, -0.02).
+
+Done adding ions.
+> charge sys
+Total unperturbed charge:  -0.000001
+Total perturbed charge:    -0.000001
+> saveamberparm sys leap.prmtop leap.inpcrd
+Checking Unit.
+
+Note: Ignoring the warnings from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 233 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	PRF	1
+  )
+ (no restraints)
+> savepdb sys leap.pdb
+Writing pdb file: leap.pdb
+   printing CRYST1 record to PDB file with box info
+> quit
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 0; Notes = 1.

@@ -1,0 +1,30 @@
+#ifdef POSRES_100
+#include "posre_RNA_100.itp"
+#endif
+#ifdef POSRES_200
+#include "posre_RNA_200.itp"
+#endif
+#ifdef POSRES_300
+#include "posre_RNA_300.itp"
+#endif
+#ifdef POSRES_400
+#include "posre_RNA_400.itp"
+#endif
+#ifdef POSRES_500
+#include "posre_RNA_500.itp"
+#endif
+#ifdef POSRES_600
+#include "posre_RNA_600.itp"
+#endif
+#ifdef POSRES_700
+#include "posre_RNA_700.itp"
+#endif
+#ifdef POSRES_800
+#include "posre_RNA_800.itp"
+#endif
+#ifdef POSRES_900
+#include "posre_RNA_900.itp"
+#endif
+#ifdef POSRES_1000
+#include "posre_RNA_1000.itp"
+#endif
