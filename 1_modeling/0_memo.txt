@@ -1,0 +1,3 @@
+1, download from PDB
+2, grep ATOM 1_3q50.pdb > 2_3q50.pdb and rmeove needless sections
+

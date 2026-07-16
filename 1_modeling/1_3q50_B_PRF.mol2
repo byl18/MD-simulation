@@ -1,0 +1,59 @@
+# Name: PRF
+# Created by ModelServer 0.9.12
+
+# model_server_result.job_id: vlKmeU0-Higi1aU9wOuGjA
+# model_server_result.datetime_utc: 2025-10-26 10:30:00
+# model_server_result.server_version: 0.9.12
+# model_server_result.query_name: ligand
+# model_server_result.source_id: pdb-bcif
+# model_server_result.entry_id: 3q50
+
+# model_server_params.name: atom_site
+# model_server_params.value: {"label_asym_id":"B","auth_seq_id":34}
+
+# model_server_stats.io_time_ms: 20
+# model_server_stats.parse_time_ms: 4
+# model_server_stats.create_model_time_ms: 1
+# model_server_stats.query_time_ms: 215
+# model_server_stats.encode_time_ms: 0
+# model_server_stats.element_count: 13
+
+@<TRIPOS>MOLECULE
+PRF
+13 14 1
+****
+****
+
+@<TRIPOS>ATOM
+1 N1 34.237 33.908 23.164 N.am 1 PRF 0.000
+2 C2 33.630 32.772 23.730 C.cat 1 PRF 0.000
+3 N3 34.006 32.166 24.882 N.2 1 PRF 0.000
+4 C4 35.097 32.797 25.472 C.ar 1 PRF 0.000
+5 C5 35.773 33.918 24.975 C.ar 1 PRF 0.000
+6 C6 35.363 34.533 23.783 C.2 1 PRF 0.000
+7 O6 35.856 35.520 23.257 O.2 1 PRF 0.000
+8 C7 36.822 34.252 25.862 C.ar 1 PRF 0.000
+9 C10 37.733 35.412 25.664 C.3 1 PRF 0.000
+10 N11 38.843 35.378 26.629 N.3 1 PRF 0.000
+11 C8 36.777 33.322 26.889 C.ar 1 PRF 0.000
+12 N9 35.713 32.416 26.650 N.ar 1 PRF 0.000
+13 N2 32.531 32.255 23.057 N.pl3 1 PRF 0.000
+@<TRIPOS>BOND
+1 1 2 1
+2 1 6 1
+3 2 3 2
+4 2 13 1
+5 3 4 1
+6 4 5 ar
+7 4 12 ar
+8 5 6 1
+9 5 8 ar
+10 6 7 2
+11 8 9 1
+12 8 11 ar
+13 9 10 1
+14 11 12 ar
+15 1 12 ar    # 闭合第一个芳香环：N1-N9
+16 3 13 ar    # 确保第二个环的完整性
+@<TRIPOS>SUBSTRUCTURE
+1 PRF 1
