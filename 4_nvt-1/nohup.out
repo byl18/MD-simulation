@@ -1,0 +1,70 @@
+                       :-) GROMACS - gmx mdrun, 2024 (-:
+
+Executable:   /misc/opt/app/gromacs/2024.0/openmpi/RTX4090/bin/gmx_mpi
+Data prefix:  /misc/opt/app/gromacs/2024.0/openmpi/RTX4090
+Working dir:  /misc/work19/yilan/projects/PreQ1/4_nvt-1
+Command line:
+  gmx_mpi mdrun -deffnm nvt
+
+
+Back Off! I just backed up nvt.log to ./#nvt.log.2#
+Reading file nvt.tpr, VERSION 2024 (single precision)
+Changing nstlist from 10 to 80, rlist from 1.007 to 1.156
+
+Update groups can not be used for this system because atoms that are (in)directly constrained together are interdispersed with other atoms
+
+1 GPU selected for this run.
+Mapping of GPU IDs to the 2 GPU tasks in the 1 rank on this node:
+  PP:0,PME:0
+PP tasks will do (non-perturbed) short-ranged interactions on the GPU
+PP task will update and constrain coordinates on the CPU
+PME tasks will do all aspects on the GPU
+Using 1 MPI process
+Using 8 OpenMP threads 
+
+
+Back Off! I just backed up nvt.xtc to ./#nvt.xtc.1#
+
+Back Off! I just backed up nvt.edr to ./#nvt.edr.1#
+starting mdrun 'Generic title'
+500000 steps,   1000.0 ps.
+                       :-) GROMACS - gmx mdrun, 2024 (-:
+
+Executable:   /misc/opt/app/gromacs/2024.0/openmpi/RTX4090/bin/gmx_mpi
+Data prefix:  /misc/opt/app/gromacs/2024.0/openmpi/RTX4090
+Working dir:  /misc/work19/yilan/projects/PreQ1/4_nvt-1
+Command line:
+  gmx_mpi mdrun -deffnm nvt
+
+
+Back Off! I just backed up nvt.log to ./#nvt.log.1#
+Reading file nvt.tpr, VERSION 2024 (single precision)
+Changing nstlist from 10 to 80, rlist from 1.007 to 1.156
+
+Update groups can not be used for this system because atoms that are (in)directly constrained together are interdispersed with other atoms
+
+1 GPU selected for this run.
+Mapping of GPU IDs to the 2 GPU tasks in the 1 rank on this node:
+  PP:0,PME:0
+PP tasks will do (non-perturbed) short-ranged interactions on the GPU
+PP task will update and constrain coordinates on the CPU
+PME tasks will do all aspects on the GPU
+Using 1 MPI process
+Using 8 OpenMP threads 
+
+
+Back Off! I just backed up nvt.xtc to ./#nvt.xtc.1#
+
+Back Off! I just backed up nvt.edr to ./#nvt.edr.1#
+starting mdrun 'Generic title'
+500000 steps,   1000.0 ps.
+
+Writing final coordinates.
+
+               Core t (s)   Wall t (s)        (%)
+       Time:     2773.652      346.792      799.8
+                 (ns/day)    (hour/ns)
+Performance:      249.142        0.096
+
+GROMACS reminds you: "GROMACS First : Making MD Great Again" (Vedran Miletic)
+

@@ -1,0 +1,54 @@
+;nvt
+;https://manual.gromacs.org/documentation/2023-current/user-guide/mdp-options.html
+
+define                  = -DPOSRES_1000
+
+
+integrator              = md
+dt                      = 0.002     ; 2 fs
+nsteps                  = 500000    ; 2 fs * 500000 = 1 ns, 2 fs * 5000000 = 10 ns, 2 fs * 50000000 = 100 ns
+
+
+constraint-algorithm    = LINCS
+constraints             = h-bonds
+
+
+cutoff-scheme           = Verlet
+pbc                     = xyz
+
+
+vdwtype                 = Cut-off
+rvdw                    = 1.0
+coulombtype             = PME
+rcoulomb                = 1.0
+
+
+tcoupl                  = nose-hoover
+tc-grps                 = System
+tau-t                   = 2.0
+ref-t                   = 300
+
+
+pcoupl                  = no
+
+
+
+
+
+
+
+continuation            = no
+gen-vel                 = yes
+gen-temp                = 100
+gen-seed                = -1
+
+
+nstenergy               = 5000
+nstlog                  = 5000
+nstxout-compressed      = 5000
+
+
+annealing               = single
+annealing-npoints       = 2
+annealing-time          =   0    1000 
+annealing-temp          = 100     300
