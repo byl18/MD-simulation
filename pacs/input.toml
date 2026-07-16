@@ -1,0 +1,34 @@
+## basic
+max_cycle = 300
+n_replica = 64
+n_parallel = 64
+centering = true
+centering_selection = "resid 0 to 33"
+working_dir = "/gs/bs/tga-KitaoLab-NexusYtec/yilan/projects/PreQ1/trial01/pacs2/v2"
+
+## simulator
+simulator = "gromacs"                               # Simulator used inside PaCS-MD
+cmd_mpi = "mpirun -np 64"                          # Commands for MPI such as mpirun, blank is OK
+cmd_serial = "gmx_mpi mdrun -ntomp 8"               # Commands to run the simulator serially
+cmd_parallel = "gmx_mpi mdrun -ntomp 8"             # Commands to run the simulator parallelly
+structure = "../6_cmd-1/cmd5_fit_pbcatom.gro" # Structural file such as gro, pdb, rst7, etc.
+topology = "../2_md-preparation/gleap.top"          # Topology file such as top, parm7, psf, etc.
+mdconf = "./pacs.mdp"                           # Parameter file such as mdp, mdin, namd, etc.
+index_file = "../2_md-preparation/gleap.ndx"        # Gromacs index file
+trajectory_extension = ".xtc"                       # Trajectory file extension. ("." is necessary)
+
+## analyzer
+type = "rmsddissociation"
+threshold = 5 
+skip_frame = 1
+analyzer = "mdtraj"
+reference = "../6_cmd-1/cmd5_fit_pbcatom.gro"
+selection1 = "resid 0 to 32"
+selection2 = "resid 33"
+
+## postprocess
+cmd_gmx = "gmx_mpi"
+genrepresent = true
+rmmol = true
+keep_selection = "not water"
+rmfile = false
